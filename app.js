@@ -209,7 +209,7 @@ let mainLoop = setInterval(() => {
         
     }
 
-    // Вывож количества набранных очок
+    // Вывод количества набранных очок
     readline.cursorTo(rl, (N + 1)* 2, 1);
     process.stdout.write(scoreColor(`Score: ${appleCount}`));
 
