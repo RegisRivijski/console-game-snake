@@ -67,6 +67,7 @@ let appleHave = false;
 let appleCount = 0;
 
 let snakeBlocks = [];
+
 class SnakeBlock {
     constructor(xIndex, yIndex) {
         this.xIndex = xIndex;
@@ -164,9 +165,7 @@ let mainLoop = setInterval(() => {
         field[snakeBlocks[0].yIndex][snakeBlocks[0].xIndex] = 0;
 
         snakeBlocks.push(new SnakeBlock(snakeBlocks[snakeBlocks.length - 1].xIndex, snakeBlocks[snakeBlocks.length - 1].yIndex));
-        
         appleCount++;
-
     } else if (field[snakeBlocks[0].yIndex + snakeBlocks[0].deltaY][snakeBlocks[0].xIndex + snakeBlocks[0].deltaX] !== 0) {
         if (snakeBlocks.length !== 1) {
             clearInterval(mainLoop);
@@ -184,11 +183,16 @@ let mainLoop = setInterval(() => {
         field[applePos.yIndex][applePos.xIndex] = 2;
         applePos.setPos(applePos.xIndex * 2, applePos.yIndex);
         appleHave = true;
+        
+        // Вывод количества набранных очок
+        readline.cursorTo(rl, (N + 1)* 2, 1);
+        process.stdout.write(scoreColor(`Score: ${appleCount}`));
+            
+        // Яблочко (отрисовка)
+        readline.cursorTo(rl, applePos.xPos, applePos.yPos);
+        process.stdout.write(appleColor('  '));
     }
 
-    // Яблочко (отрисовка)
-    readline.cursorTo(rl, applePos.xPos, applePos.yPos);
-    process.stdout.write(appleColor('  '));
 
     // Передвижение змейки + отрисовка
     for(let i = snakeBlocks.length - 1; i >= 0; i--){
@@ -208,10 +212,6 @@ let mainLoop = setInterval(() => {
         }
         
     }
-
-    // Вывод количества набранных очок
-    readline.cursorTo(rl, (N + 1)* 2, 1);
-    process.stdout.write(scoreColor(`Score: ${appleCount}`));
 
     // Перевод курсора с игрового поля
     readline.cursorTo(rl, 0, M + 1);
