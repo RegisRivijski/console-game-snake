@@ -1,6 +1,6 @@
 # SnakeNodeJS
 
-![SnakeNodeJS](https://github.com/RegisRivijski/SnakeNodeJS/blob/master/Screenshot/sc.png?raw=true)
+![SnakeNodeJS](Screenshot/sc.png "Hello, NodeJS")
 
 Управление:
 W - вверх,
