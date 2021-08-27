@@ -14,7 +14,7 @@ function getRandomInt(min, max) {
 }
 
 function gameOver(rl, M, appleCount){
-    readline.cursorTo(rl, 0, M + 1);
+    console.clear();
     console.log(chalk.redBright('Game Over'));
     console.log(`Score: ${appleCount}`);
     exit();
@@ -193,9 +193,3 @@ async function main() {
 }
 
 main();
-
-
-
-
-
-
